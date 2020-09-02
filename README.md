@@ -1,1 +1,1 @@
-# ScoutingApp2018
+# Titan Robotics Scouting App

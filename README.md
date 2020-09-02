@@ -1,1 +1,1 @@
-# ScoutingApp2017
+# ScoutingApp2018

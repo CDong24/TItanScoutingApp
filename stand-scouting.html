@@ -1,7 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
-		<meta charset="UTF-8">
+    <style>
+</style>
+</head>
+		<meta name="viewport" content= "width=device-width, user-scalable=no" charset="UTF-8">
 		
 		<title>Stand Scouting</title>
 		
@@ -10,105 +14,354 @@
 	</head>
 	<body>
 	    <form onsubmit="onSubmit()">
-	    	<label>Scouter Name: <input type="text"id="name"name="Scouter Name"required="true"autofocus="true"></label>
+	    	<label style="font-size:4vw;">Scouter Name: <input type="text"id="name"name="Scouter Name"required="true"autofocus="true" style="font-size:3vw;"></label>
     		<fieldset style="background-color:#8db3e2">
-    			<legend>Match Info</legend>
-	    		<label>Team Number: <input type="number" id="team-number" name="Team Number" required="true" min="1" max="9999"></label>
-	    		<label>Team Color: <select required="true" name="Team Color">
+    			<legend style="font-size:4vw;" >Pre Match Info</legend>
+	    		<label style="font-size:6vw;" >Team Number: <input type="number" id="team-number" name="Team Number" required="true" min="1" max="9999" style="width:45%;height:5vw;font-size:4vw;"></label>
+          <br>
+	    		<label style="font-size:6vw;">Team Color: <select required="true" name="Team Color" style="font-size:5vw;">
 	    		    <option value=""selected="selected"disabled="true">Select color</option>
 	    		    <option value="Red">Red</option>
 	    		    <option value="Blue">Blue</option>
 	    		</select></label>
-	    		<label>Match Number: <input type="number" id="match-number" name="Match Number" required="true" min="1" max="200"></label>
-	    		<label>Robot Start: <select id="robot-station"required="true" name="Robot Starting Position">
+          <br>
+	    		<label style="font-size:6vw;">Match Number: <input type="number" id="match-number" name="Match Number" required="true" min="1" max="200" style="width:45%;height:5vw;font-size:4vw;" ></label> <br>
+	    		<label style="font-size:6vw;">Robot Start: <select id="robot-station"required="true" name="Robot Starting Position" style="font-size:5vw;">
 	    		    <option value=""selected="selected" disabled="true">Select station</option>
 	    		    <option value="Far">Far</option>
 	    		    <option value="Mid">Middle</option>
 	    		    <option value="Close">Close</option>
-	    		</select></label>
-	    		<label>Driver Station: <select id="robot-station"required="true" name="Driver Station Position">
+	    		</select></label> <br>
+	    		<label style="font-size:6vw;" >Driver Station: 
+            <select id="robot-station"required="true" name="Driver Station Position" style="font-size:5vw;">
 	    		    <option value=""selected="selected" disabled="true">Select station</option>
 	    		    <option value="Far">Far</option>
 	    		    <option value="Mid">Middle</option>
 	    		    <option value="Close">Close</option>
 	    		</select></label>
     		</fieldset>
-    		<fieldset style="background-color:#e5b8b7">
-    			<legend>Sandstorm</legend>
-	    		<label>Type: <select required="true" name="Sandstorm Type">
-	    			<option value=""selected="selected" disabled="true">Select type</option>
-	    			<option value="Blind">Blind</option>
-	    			<option value="Auto">Auto</option>
-	    			<option value="Camera">Camera</option>
-	    		</select></label>
-	    		<label>Hatches on Rocket: <input name="Sandstorm Hatches on Rocket" type="number" min="0" max="12" value="0"></label>
-	    		<label>Balls on Rocket: <input name="Sandstorm Balls on Rocket" type="number" min="0" max="12" value="0"></label>
-	    		<label>Hatches on Cargo: <input name="Sandstorm Hatches on Cargo" type="number" min="0" max="12" value="0"></label>
-	    		<label>Balls on Cargo: <input name="Sandstorm Balls on Cargo" type="number" min="0" max="12" value="0"></label>
-	    		<label>Hab 1: <input type="checkbox" name="Sandstorm Hab 1"></label>
-	    		<label>Hab 2: <input type="checkbox" name="Sandstorm Hab 2"></label>
-	    		Height: <label>1 <input type="checkbox" name="Sandstorm Height 1"></label> <label>2 <input type="checkbox" name="Sandstorm Height 2"></label> <label>3 <input type="checkbox" name="Sandstorm Height 3"></label>
+        <fieldset style="background-color:#e5b8b7">
+    			<legend style="font-size:4vw;">During Match</legend>
+          <label style="font-size:6vw;"l> How many balls did the robot start with?
+              <select name="Starting Balls" id="StartBalls" required="true"style="font-size:5vw;">
+                <option style="font-size:10vw;" value="3" selected>Three</option>
+                <option style="font-size:10vw;" value="2">Two</option>
+                <option style="font-size:10vw;" value="1">One</option>
+                <option style="font-size:10vw;" value="0">Zero</option>
+            </select></label>
+            <br>
+            <label style="font-size:6vw;" >Did the robot move off the initation line?
+              <select name="AutoMove" id="AutoMove" required="true"style="font-size:5vw;">
+            <option style="font-size:6vw;" value="No" selected>No</option>
+            <option style="font-size:6vw;" value="Yes" >Yes</option>
+              </select>
+	    	</label>
+          <fieldset style="width:95%;background-color:#ffeecc;display:inline">
+            	<legend style="font-size:4vw;">Balls Scored in Auto</legend>
+               <table style="width:100%">
+                <tr>
+                 <th colspan="2"> Shots in level 1 </th>
+                 <th colspan="2"> Shots in level 2 </th>
+                 <th colspan="2"> Shots in level 3 </th>
+               
+                 </tr>
+                 <tr>   
+                    <th rowspan="2" style="font-size:250%;font-family:verdana;" id="lvl1count" name="Autoball1"> 0    </th>
+                   <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "upcount1()"> &uarr; </button> </th>
+               
+                 <th rowspan="2" style="font-size:250%;font-family:verdana;" id="lvl2count" name="Autoball2"> 0    </th>
+                   <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "upcount2()"> &uarr; </button> </th>
+               
+                 <th rowspan="2" style="font-size:250%;font-family:verdana;" id="lvl3count" name="Autoball3"> 0    </th>
+                   <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "upcount3()"> &uarr; </button> </th>
+                 </tr>
+                 
+                 <tr>
+                 <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "downcount1()"> &darr;</button> </th>
+               
+                 <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "downcount2()"> &darr;</button> </th>
+               
+                 <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "downcount3()"> &darr;</button> </th>
+                 </tr>
+                 </table>
+          </fieldset>
+           <fieldset style="width:95%;background-color:#ffeecc;display:inline">
+            	<legend style="font-size:4vw;">Balls Scored in Teleop</legend> <table style="width:100%">
+                <tr>
+                 <th colspan="2"> Shots in level 1 </th>
+                 <th colspan="2"> Shots in level 2 </th>
+                 <th colspan="2"> Shots in level 3 </th>
+               
+                 </tr>
+                 <tr>   
+                    <th rowspan="2" style="font-size:250%;font-family:verdana;" id="lvl4count" name="Teleball1"> 0 </th>
+                   <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "upcount4()"> &uarr; </button> </th>
+               
+                 <th rowspan="2" style="font-size:250%;font-family:verdana;" id="lvl5count" name="Teleball2" > 0    </th>
+                   <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "upcount5()"> &uarr; </button> </th>
+               
+                 <th rowspan="2" style="font-size:250%;font-family:verdana;" id="lvl6count" name="Teleball3"> 0    </th>
+                   <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;"onclick = "upcount6()"> &uarr; </button> </th>
+                 </tr>
+                 
+                 <tr>
+                 <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "downcount4()"> &darr;</button> </th>
+               
+                 <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "downcount5()"> &darr;</button> </th>
+               
+                 <th> <button type="button" style="width:90%;height:6vw;font-size:4vw;" onclick = "downcount6()"> &darr;</button> </th>
+                 </tr>
+                 </table>
+                
+               </fieldset>
+          <br>
     		</fieldset>
-    		<fieldset style="background-color:#d6e3bc">
-    			<legend>Teleoperated</legend>
-	    		<fieldset style="background-color:#b6dde8;display:inline">
-	    			<legend>Balls</legend>
-					<label>Placed in Cargo: <input name="Balls in Cargo" type="number" min="0" max="12" value="0"></label>
-	    			<label>Placed in Rocket 1: <input name="Balls in Rocket 1" type="number" min="0" max="12" value="0"></label>
-	    			<label>Placed in Rocket 2: <input name="Balls in Rocket 2" type="number" min="0" max="12" value="0"></label>
-	    			<label>Placed in Rocket 3: <input name="Balls in Rocket 23" type="number" min="0" max="12" value="0"></label>
-	    			<label>Floor Intake: <input type="checkbox" name="Floor Ball Intake"></label>
-	    			<label>Unsuccessful/Dropped: <input name="Dropped Balls" type="number" min="0" max="30" value="0"></label>
-	    		</fieldset>
-	    		<fieldset style="background-color:#ed95e5;display:inline">
-	    			<legend>Hatches</legend>
-	    			<label>Placed in Cargo: <input name="Hatches in Cargo" type="number" min="0" max="12" value="0"></label>
-	    			<label>Placed in Rocket 1: <input name="Hatches in Rocket 1" type="number" min="0" max="12" value="0"></label>
-	    			<label>Placed in Rocket 2: <input name="Hatches in Rocket 2" type="number" min="0" max="12" value="0"></label>
-	    			<label>Placed in Rocket 3: <input name="Hatches in Rocket 3" type="number" min="0" max="12" value="0"></label>
-	    			<label>Floor Intake: <input type="checkbox" name="Floor Hatch Intake"></label>
-	    			<label>Unsuccessful/Dropped: <input name="Dropped Hatches" type="number" min="0" max="30" value="0"></label>
-	            </fieldset>
-	    		<fieldset style="background-color:#fbd4b4">
-	    			<legend>HAB</legend>
-	    			<label>Final Place: <select name="Final HAB Level">
-	    				<option value="Not in HAB" selected="selected">Not in HAB</option>
-	    			    <option value="1">1</option>
-	    			    <option value="2">2</option>
-	    			    <option value="3">3</option>
-	    			    <option value="Helped">Helped</option>
-	    			</select></label>
-	    			<label>Assisted: <select name="Assisted HAB Level">
-	    				<option value="None"selected="selected">None</option>
-	    			    <option value="1">1</option>
-	    			    <option value="2">2</option>
-	    			    <option value="3">3</option>
-	    			</select></label>
-	            </fieldset>
-	            <fieldset style="background-color:#ffff00">
-	           		<legend>Defense</legend>
-		            <label>Played Defense: <input type="checkbox" name="Played Defense"></label>
-		            <label>Defense notes: <input name="Defense notes"type="text"></label>
-	            </fieldset>
-	            <label>Primary focus: <select id="focus" required="true" name="Primary Focus">
-	                <option value=""disabled="true"selected="true"></option>
-	                <option value="None">None</option>
-	                <option value="Switch">Rocket</option>
-	                <option value="Scale">Cargo</option>
-	                <option value="Defense">Defense</option>
-	            </select></label>
-	            <label>Red score: <input name="Red score"id="red-score"type="number"min="0"max="700"required="true"></label>
-	            <label>Blue score: <input name="Blue score"id="blue-score"type="number"min="0"max="700"required="true"></label>
-            </fieldset>
-            <label>Comments:<input id="notes"type="text" name="Comments"></label> <label>Driver notes/fouls: <input name="Driver notes/fouls"id="driver-notes"type="text"></label>
-            <label>Got Yellow Card: <input name="Yellow card" type="checkbox"></label>
-            <label>Got Foul: <input name="Fouled" type="checkbox"></label>
-            <label>Got Tech Foul: <input name="Tech Fouled" type="checkbox"></label>
+        <fieldset style="background-color:#d6e3bc">
+    			<legend style="font-size:4vw;">Post Match</legend>
+          <table width="100%" style="font-size:5vw;">
+          <label > 
+            
+            <tr>
+            <td>Did they spin the color wheel</td>
+            <td><input type="checkbox" name="Color Spin" style="width:4vw;height:4vw;"></td>
+            </tr>
+            
+            <tr>
+            <td>Did they match the color wheel </td>
+            <td> <input type="checkbox" name="Color Match" style="width:4vw;height:4vw;"> </td>
+            </tr>
+            
+            <tr>
+            <td>Did the robot climb</td>
+            <td> <input type="checkbox" name="Climb" style="width:4vw;height:4vw;">
+            </tr>
+            
+            <tr>
+            <td> Could they level on the bar</td>
+            <td> <input type="checkbox" name="Auto level" style="width:4vw;height:4vw;" > </td>
+            </tr>
+
+            </label>
+            </table>
+            <table cellpadding="10">
+              <tr>
+            <label style="font-size:5vw;" >
+              <td style="font-size:5vw;">
+               <p>Rate their defense 1-5</p>
+               </td>
+               <td>
+                <select name="Defenserank" id="Defenserank" required="true"style="font-size:5vw;">
+            <option value="0" selected>0</option>
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>
+              </select>
+               </td>
+            </label>
+            </td>
+
+            </tr>
+            <tr>
+              <label style="font-size:5vw;" >
+               <td style="font-size:5vw;">
+               <p>Rate their response defense 1-5</p>
+               </td>
+               <td>
+                 <select name="DefenseResponce" id="DefenseResponce" required="true"style="font-size:5vw;">
+            <option value="0" selected>0</option>
+            <option value="1" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>
+              </select>
+               </td>
+            </label>
+            </tr>
+            </table>
+            <label style="font-size:5vw;"> 
+            <p>Where did they shoot from most?</p>
+            <select name="preferred shooting" style="font-size:5vw;">
+                <option style="font-size:4vw;" value="Didnt_shoot" selected> N/A (didnt score balls)</option>
+                <option value="Triangle">The triangle in front of the power port</option>
+                <option value="Trench">The trench run</option>
+                <option value="No_Prefrence">No Prefrence</option>
+                <option value="Sector_line">Sector line</option>
+                <option value="Other">Other</option>
+            </select>
+            </label>
             <br>
-            <br>
-    		<input type="submit"value="Submit">
+            <label>
+        <input hidden type="number" id="ball1" value="0"></input>
+        <input hidden type="number" id="ball2" value="0"></input>
+        <input hidden type="number" id="ball3" value="0"></input>
+        <input hidden type="number" id="ball4" value="0"></input>
+        <input hidden type="number" id="ball5" value="0"></input>
+        <input hidden type="number" id="ball6" value="0"></input>
+
+        </label>
+
+        
+        <fieldset style="width:95%;background-color:#f4e6ff;display:inline"> <legend style="font-size:4vw;">Final Match Scores</legend>
+        
+        <table style="width:60%">
+        <tr>
+          <td>
+        <label style="font-size:6vw;" >Red Score: </label>
+        </td>
+        <td>
+        <input type="number" id="RedScore" name="Blue Score" required="true" min="0" max="1000" style="width:250%;height:5vw;font-size:4vw;"></input>
+        </td>
+        </tr>
+
+        <tr>
+          <td>
+        <label style="font-size:6vw;" >Blue Score: </label>
+        </td>
+        <td>
+        <input type="number" id="BlueScore" name="Blue Score" required="true" min="0" max="1000" style="width:250%;height:5vw;font-size:4vw;"></input>
+        </td>
+        </tr>
+        </table>
+        </fieldset>  
+    		</fieldset>
+        <br>
+
+        <input hidden type="number" name="month" id="month"></input>
+        <input hidden type="number" name="day" id="day"></input>
+
+    		<input style="font-size:5vw;width:100%;height:7vw;" type="submit" onclick="date()" value="Submit"> </input>
 		</form>
 	</body>
+  <script>
+    function date(){
+      var d = new Date();
+      document.getElementById("day").value = d.getDate()
+      document.getElementById("month").value = d.getMonth()
+
+    }
+
+  </script>
+  <script>
+  
+  
+                 var c4 = 0
+                   function upcount4(){
+                    c4 +=1;
+                   document.getElementById("lvl4count").innerHTML = c4
+                   document.getElementById("ball4").value = c4
+                   }
+                 function downcount4(){
+                   if (c4>0){
+                     c4 -=1;
+                 document.getElementById("lvl4count").innerHTML = c4
+                 document.getElementById("ball4").value = c4
+                 } else {
+                   document.getElementById("lvl4count").innerHTML = c4;
+                   document.getElementById("ball4").value = d4
+                 }
+                 }
+                 
+                   
+                 var c5 = 0
+                   function upcount5(){
+               
+                   document.getElementById("lvl5count").innerHTML = c5 +=1
+                   document.getElementById("ball5").value = c5
+                   } 
+                 function downcount5(){
+               
+                 if (c5>0){
+                 document.getElementById("lvl5count").innerHTML = c5 -=1;
+                 document.getElementById("ball5").value = c5
+                 } else {
+                   document.getElementById("lvl5count").innerHTML = c5;
+                   document.getElementById("ball5").value = c5
+                 }
+                 }
+
+                   
+                   var c6 = 0
+                   function upcount6(){
+               
+                   document.getElementById("lvl6count").innerHTML = c6 +=1
+                   document.getElementById("ball6").value = c6
+                   } 
+                 function downcount6(){
+                 
+                 if (c6>0){
+                 document.getElementById("lvl6count").innerHTML = c6 -=1;
+                 document.getElementById("ball6").value = c6
+                 } else {
+                   document.getElementById("lvl6count").innerHTML = c6;
+                   document.getElementById("ball6").value = c6
+                 }
+                 }
+                 
+               
+                 var c1 = 0
+                   function upcount1(){
+               
+                   document.getElementById("lvl1count").innerHTML = c1 +=1
+                   document.getElementById("ball1").value = c1
+                   } 
+                 function downcount1(){
+               
+                 if (c1>0){
+                 document.getElementById("lvl1count").innerHTML = c1 -=1;
+                 document.getElementById("ball1").value = c1
+                 } else {
+                   document.getElementById("lvl1count").innerHTML = c1;
+                   document.getElementById("ball1").value = c1
+                 }
+                 }
+                 
+                   
+                 var c2 = 0
+                   function upcount2(){
+               
+                   document.getElementById("lvl2count").innerHTML = c2 +=1
+                   
+                   document.getElementById("ball2").value = c2
+                   } 
+                 function downcount2(){
+               
+                 if (c2>0){
+                 document.getElementById("lvl2count").innerHTML = c2 -=1;
+                 document.getElementById("ball2").value = c2
+                 } else {
+                   document.getElementById("lvl2count").innerHTML = c2;
+                   document.getElementById("ball2").value = c2 
+                 }
+                 }
+                 
+                   
+                   var c3 = 0
+                   function upcount3(){
+               
+                   document.getElementById("lvl3count").innerHTML = c3 +=1
+                    document.getElementById("ball3").value = c3
+                   } 
+                 function downcount3(){
+               
+                 if (c3>0){
+                 document.getElementById("lvl3count").innerHTML = c3 -=1;
+                 document.getElementById("ball3").value = c3
+                 } else {
+                   document.getElementById("lvl3count").innerHTML = c3;
+                   document.getElementById("ball3").value = c3
+                 }
+                 }
+
+                document.getElementById("ball1").value = c1;
+                document.getElementById("ball2").value = c2;
+                document.getElementById("ball3").value = c3;
+                document.getElementById("ball4").value = c4;
+                document.getElementById("ball5").value = c5;
+                document.getElementById("ball6").value = c6;
+               </script>
 	<script>
 	    //someone is probably throwing up that i am using jquery. i am just too lazy to do dom manipulation because it is annoying.
 	    //plus this isnt really going to be used on anything but chrome once a year. it doesnt need to be super fancy and complicated.
